@@ -1,4 +1,4 @@
-package main
+package log_mac_sleep
 
 /* example: output comment to console on sleep/wake up */
 import (
@@ -19,7 +19,7 @@ var (
 	LogFileName = ".sleeplog/log"
 )
 
-func main() {
+func Start() {
 	mac_switch_watch.SetHandler(mac_switch_watch.KeyOnSystemWillSleep, OnSleep)
 	mac_switch_watch.SetHandler(mac_switch_watch.KeyOnSystemWillPowerOn, OnWakeup)
 	mac_switch_watch.SetHandler(mac_switch_watch.KeyOnSystemWillPowerOff, OnPowerOff)
