@@ -61,11 +61,11 @@ func logTimeToFile(msg string) {
 	defer mutex.Unlock()
 
 	if _, err := os.Stat(filepath.Dir(logFilePath)); os.IsNotExist(err) {
-		os.MkdirAll(filepath.Dir(logFilePath), 0666)
+		os.MkdirAll(filepath.Dir(logFilePath), 0744)
 	}
 
-	log := fmt.Sprintf("%s:%s", msg, now)
-	file, _ := os.OpenFile(logFilePath, os.O_APPEND, 0666)
+	log := fmt.Sprintf("%s:%s\n", msg, now)
+	file, _ := os.OpenFile(logFilePath, os.O_RDWR|os.O_APPEND|os.O_CREATE, 0644)
 	file.WriteString(log)
 
 	defer file.Close()
