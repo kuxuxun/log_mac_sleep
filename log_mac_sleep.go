@@ -60,16 +60,8 @@ func logTimeToFile(msg string) {
 	mutex.Lock()
 	defer mutex.Unlock()
 
-	if _, err := os.Stat(logFilePath); os.IsNotExist(err) {
-		err := os.Mkdir(filepath.Dir(logFilePath), 0666)
-		if err != nil {
-			panic(err)
-		}
-
-		_, err = os.Create(logFilePath)
-		if err != nil {
-			panic(err)
-		}
+	if _, err := os.Stat(filepath.Dir(logFilePath)); os.IsNotExist(err) {
+		os.MkdirAll(filepath.Dir(logFilePath), 0666)
 	}
 
 	log := fmt.Sprintf("%s:%s", msg, now)
