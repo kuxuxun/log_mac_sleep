@@ -133,8 +133,15 @@ func (w WorkingTimeADay) ToCsvLine() string {
 		dt = fmtJst(w.Start, outDateFmt)
 	}
 
-	s := fmtJst(w.Start, outTimeFmt)
-	e := fmtJst(w.End, outTimeFmt)
+	s, e := "", ""
+
+	if !w.Start.IsZero() {
+		s = fmtJst(w.Start, outTimeFmt)
+	}
+
+	if !w.End.IsZero() {
+		e = fmtJst(w.End, outTimeFmt)
+	}
 
 	return fmt.Sprintf("%s,%s,%s", dt, s, e)
 }
