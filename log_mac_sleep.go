@@ -16,16 +16,16 @@ import (
 )
 
 var (
-	mutex                 = &sync.Mutex{}
-	jst                   = time.FixedZone("Asia/Tokyo", 9*60*60)
-	LogTimeFmt            = "2006-01-02 15:04:05"
-	outDateFmt            = "2006-01-02"
-	outTimeFmt            = "15:04:05"
-	LogFileName           = ".sleeplog/log"
-	AggrFileName          = ".sleeplog/log_aggre"
-	endToBeginThreshold   = 6 * time.Hour           // rolling a day if interval of end to begin over this term.
-	beginToBeginThreshold = 3 * endToBeginThreshold // rolling a day if interval of begin to begin over this term. (suggesting there were no "end" action between this term)
-	locationJP, _         = time.LoadLocation("Asia/Tokyo")
+	mutex                = &sync.Mutex{}
+	jst                  = time.FixedZone("Asia/Tokyo", 9*60*60)
+	LogTimeFmt           = "2006-01-02 15:04:05"
+	outDateFmt           = "2006-01-02"
+	outTimeFmt           = "15:04:05"
+	LogFileName          = ".sleeplog/log"
+	AggrFileName         = ".sleeplog/log_aggre"
+	endToBeginThreshold  = 6 * time.Hour           // rolling a day if interval of end to begin over this term.
+	sameActionsThreshold = 3 * endToBeginThreshold // rolling a day if interval of begin to begin over this term. (suggesting there were no "end" action between this term)
+	locationJP, _        = time.LoadLocation("Asia/Tokyo")
 )
 
 const (
@@ -38,6 +38,10 @@ var actionTypes = map[string]int{
 	"wakeup":   IS_START,
 	"sleep":    IS_END,
 	"poweroff": IS_END,
+}
+
+func Aggregate() {
+	aggrLog()
 }
 
 func Start() {
@@ -91,7 +95,7 @@ func logTimeToFile(msg string) {
 	defer file.Close()
 }
 
-func aggrLog(msg string) {
+func aggrLog() {
 	usr, _ := user.Current()
 	homeDir := usr.HomeDir
 	logFilePath := filepath.Join(homeDir, LogFileName)
@@ -169,7 +173,7 @@ func aggregate(logFileScanner *bufio.Scanner) ([]WorkingTimeADay, error) {
 		switch actionType {
 		case IS_START:
 			if workingTime.End.IsZero() {
-				if logedTime.After(workingTime.Start.Add(beginToBeginThreshold)) {
+				if logedTime.After(workingTime.Start.Add(sameActionsThreshold)) {
 					workingTimes = append(workingTimes, workingTime)
 					workingTime = WorkingTimeADay{}
 					workingTime.Start = logedTime
@@ -188,13 +192,16 @@ func aggregate(logFileScanner *bufio.Scanner) ([]WorkingTimeADay, error) {
 			}
 
 		case IS_END:
+			if logedTime.After(workingTime.End.Add(sameActionsThreshold)) {
+				workingTimes = append(workingTimes, workingTime)
+				workingTime = WorkingTimeADay{}
+			}
 			workingTime.End = logedTime
 
 		default:
 			panic("not impl")
 
 		}
-
 		workingTimes = append(workingTimes, workingTime)
 	}
 
