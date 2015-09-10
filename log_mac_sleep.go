@@ -18,7 +18,7 @@ import (
 var (
 	mutex                = &sync.Mutex{}
 	jst                  = time.FixedZone("Asia/Tokyo", 9*60*60)
-	LogTimeFmt           = "2006-01-02 15:04:05"
+	LogTimeFmt           = "2006-01-02 15_04_05"
 	outDateFmt           = "2006-01-02"
 	outTimeFmt           = "15:04:05"
 	LogFileName          = ".sleeplog/log"
@@ -155,7 +155,9 @@ func aggregate(logFileScanner *bufio.Scanner) ([]WorkingTimeADay, error) {
 	workingTime := WorkingTimeADay{}
 
 	for logFileScanner.Scan() {
-		cols := strings.Split(logFileScanner.Text(), " ")
+		line := logFileScanner.Text()
+		line = strings.TrimSpace(line)
+		cols := strings.Split(logFileScanner.Text(), ":")
 		if len(cols) != 2 {
 			panic(errors.New(fmt.Sprintf("invalid line %#v", cols)))
 		}

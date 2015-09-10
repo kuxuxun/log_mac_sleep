@@ -8,17 +8,17 @@ import (
 )
 
 func testTypical(t *testing.T) {
-	data := `start:2015-09-03 10:00:00
-sleep:2015-09-03 10:50:10
-wakeup:2015-09-03 10:51:30
-sleep:2015-09-03 10:50:10
-wakeup:2015-09-03 10:51:30
-sleep:2015-09-03 19:51:10
-wakeup:2015-09-04 09:55:30
-sleep:2015-09-04 14:50:10
-wakeup:2015-09-04 18:50:10
-poweroff:2015-09-04 18:50:10
-wakeup:2015-09-05 10:00:00`
+	data := `start:2015-09-03 10_00_00
+	sleep:2015-09-03 10_50_10
+	wakeup:2015-09-03 10_51_30
+	sleep:2015-09-03 10_50_10
+	wakeup:2015-09-03 10_51_30
+	sleep:2015-09-03 19_51_10
+	wakeup:2015-09-04 09_55_30
+	sleep:2015-09-04 14_50_10
+	wakeup:2015-09-04 18_50_10
+	poweroff:2015-09-04 18_50_10
+	wakeup:2015-09-05 10_00_00`
 
 	sc := bufio.NewScanner(strings.NewReader(data))
 	result, err := aggregate(sc)
@@ -55,9 +55,9 @@ wakeup:2015-09-05 10:00:00`
 }
 
 func testSerialStarts(t *testing.T) {
-	data := `start:2015-09-03 10:00:00
-start:2015-09-04 10:00:00
-sleep:2015-09-04 10:50:10`
+	data := `start:2015-09-03 10_00_00
+start:2015-09-04 10_00_00
+sleep:2015-09-04 10_50_10`
 
 	sc := bufio.NewScanner(strings.NewReader(data))
 	result, err := aggregate(sc)
@@ -86,8 +86,8 @@ sleep:2015-09-04 10:50:10`
 }
 
 func testSerialEnds(t *testing.T) {
-	data := `sleep:2015-09-03 10:00:00
-sleep:2015-09-04 10:50:10`
+	data := `sleep:2015-09-03 10_00_00
+sleep:2015-09-04 10_50_10`
 
 	sc := bufio.NewScanner(strings.NewReader(data))
 	result, err := aggregate(sc)
