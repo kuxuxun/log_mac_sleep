@@ -9,16 +9,16 @@ import (
 
 func TestTypical(t *testing.T) {
 	data := `start:2015-09-03 10_00_00
-	sleep:2015-09-03 10_50_10
-	wakeup:2015-09-03 10_51_30
-	sleep:2015-09-03 10_50_10
-	wakeup:2015-09-03 10_51_30
-	sleep:2015-09-03 19_51_10
-	wakeup:2015-09-04 09_55_30
-	sleep:2015-09-04 14_50_10
-	wakeup:2015-09-04 18_50_10
-	poweroff:2015-09-04 18_50_10
-	wakeup:2015-09-05 10_00_00`
+sleep:2015-09-03 10_50_10
+wakeup:2015-09-03 10_51_30
+sleep:2015-09-03 10_50_10
+wakeup:2015-09-03 10_51_30
+sleep:2015-09-03 19_51_10
+wakeup:2015-09-04 09_55_30
+sleep:2015-09-04 14_50_10
+wakeup:2015-09-04 18_50_10
+poweroff:2015-09-04 18_50_10
+wakeup:2015-09-05 10_00_00`
 
 	sc := bufio.NewScanner(strings.NewReader(data))
 	result, err := aggregate(sc)
