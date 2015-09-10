@@ -1,4 +1,4 @@
-package mac_switch
+package main
 
 import (
 	"flag"
