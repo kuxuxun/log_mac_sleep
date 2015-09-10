@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func testTypical(t *testing.T) {
+func TestTypical(t *testing.T) {
 	data := `start:2015-09-03 10_00_00
 	sleep:2015-09-03 10_50_10
 	wakeup:2015-09-03 10_51_30
@@ -54,7 +54,7 @@ func testTypical(t *testing.T) {
 
 }
 
-func testSerialStarts(t *testing.T) {
+func TestSerialStarts(t *testing.T) {
 	data := `start:2015-09-03 10_00_00
 start:2015-09-04 10_00_00
 sleep:2015-09-04 10_50_10`
@@ -85,7 +85,7 @@ sleep:2015-09-04 10_50_10`
 	}
 }
 
-func testSerialEnds(t *testing.T) {
+func TestSerialEnds(t *testing.T) {
 	data := `sleep:2015-09-03 10_00_00
 sleep:2015-09-04 10_50_10`
 
