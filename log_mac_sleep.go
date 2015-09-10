@@ -155,7 +155,7 @@ func aggregate(logFileScanner *bufio.Scanner) ([]WorkingTimeADay, error) {
 	workingTime := WorkingTimeADay{}
 
 	for logFileScanner.Scan() {
-		cols := strings.Split(logFileScanner.Text(), ":")
+		cols := strings.Split(logFileScanner.Text(), " ")
 		if len(cols) != 2 {
 			panic(errors.New(fmt.Sprintf("invalid line %#v", cols)))
 		}
