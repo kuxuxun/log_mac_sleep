@@ -174,6 +174,9 @@ func aggregate(logFileScanner *bufio.Scanner) ([]WorkingTimeADay, error) {
 
 		switch actionType {
 		case IS_START:
+			if workingTime.Start.IsZero() {
+				workingTime.Start = logedTime
+			}
 			if workingTime.End.IsZero() {
 				if logedTime.After(workingTime.Start.Add(sameActionsThreshold)) {
 					workingTimes = append(workingTimes, workingTime)
@@ -188,13 +191,8 @@ func aggregate(logFileScanner *bufio.Scanner) ([]WorkingTimeADay, error) {
 				continue
 			}
 
-			if workingTime.Start.IsZero() {
-				workingTime.Start = logedTime
-				continue
-			}
-
 		case IS_END:
-			if logedTime.After(workingTime.End.Add(sameActionsThreshold)) {
+			if !workingTime.End.IsZero() && logedTime.After(workingTime.End.Add(sameActionsThreshold)) {
 				workingTimes = append(workingTimes, workingTime)
 				workingTime = WorkingTimeADay{}
 			}
@@ -204,10 +202,8 @@ func aggregate(logFileScanner *bufio.Scanner) ([]WorkingTimeADay, error) {
 			panic("not impl")
 
 		}
-		workingTimes = append(workingTimes, workingTime)
 	}
 
 	workingTimes = append(workingTimes, workingTime)
-
 	return workingTimes, nil
 }
