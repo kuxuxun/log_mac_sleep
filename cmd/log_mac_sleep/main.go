@@ -9,7 +9,7 @@ import (
 
 var (
 	watch     = flag.Bool("watch", false, "")
-	aggregate = flag.Bool("aggr", false, "")
+	aggregate = flag.Bool("daily", false, "")
 )
 
 func main() {

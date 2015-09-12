@@ -22,7 +22,7 @@ var (
 	outDateFmt           = "2006-01-02"
 	outTimeFmt           = "15:04:05"
 	LogFileName          = ".sleeplog/log"
-	AggrFileName         = ".sleeplog/log_aggre"
+	AggrFileName         = ".sleeplog/daily_active"
 	endToBeginThreshold  = 6 * time.Hour           // rolling a day if interval of end to begin over this term.
 	sameActionsThreshold = 3 * endToBeginThreshold // rolling a day if interval of begin to begin over this term. (suggesting there were no "end" action between this term)
 	locationJP, _        = time.LoadLocation("Asia/Tokyo")
