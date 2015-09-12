@@ -5,7 +5,7 @@
 
 ### Download
 ```bash
- $ go get github.com/kuxuxun/cmd/log_mac_sleep
+ $ go get github.com/kuxuxun/log_mac_sleep/cmd/log_mac_sleep
 ```
 
 ### Output file path
@@ -26,3 +26,4 @@ register logging to launchd
  $ cd $GOPATH/src/github.com/kuxuxun/log_mac_sleep/_plist
  $ sh register_launchd.sh
 ```
+

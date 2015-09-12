@@ -19,6 +19,6 @@ func main() {
 	} else if *aggregate {
 		lw.Aggregate()
 	} else {
-		fmt.Printf(" Error: No argument. \n usage : log_mac_sleep [-watch | -aggr] '  ")
+		fmt.Printf(" Error: No argument. \n usage : log_mac_sleep [-watch | -daily] '")
 	}
 }
