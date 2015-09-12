@@ -85,6 +85,32 @@ sleep:2015-09-04 10_50_10`
 	}
 }
 
+func TestOneday(t *testing.T) {
+	data := `start:2015-09-03 10_00_00
+sleep:2015-09-03 10_50_10
+wakeup:2015-09-03 10_51_30
+sleep:2015-09-03 10_51_20`
+
+	sc := bufio.NewScanner(strings.NewReader(data))
+	result, err := aggregate(sc)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if len(result) != 1 {
+		t.Fatal("work days num is not 1")
+	}
+
+	{
+		wt := result[0]
+		if wt.ToCsvLine() != "2015-09-03,10:00:00,10:51:20\n" {
+			t.Fatal(fmt.Sprintf("invalid csv line %s", wt.ToCsvLine()))
+		}
+	}
+
+}
+
 func TestSerialEnds(t *testing.T) {
 	data := `sleep:2015-09-03 10_00_00
 sleep:2015-09-04 10_50_10`
