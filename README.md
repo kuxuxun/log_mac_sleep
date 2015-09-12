@@ -20,7 +20,7 @@ log_mac_sleep -watch
 log_mac_sleep -daily
 ```
 
-register logging to launchd
+register to launchd
 ```bash
 go get github.com/kuxuxun/log_mac_sleep
 cd $GOPATH/src/github.com/kuxuxun/log_mac_sleep/_plist
