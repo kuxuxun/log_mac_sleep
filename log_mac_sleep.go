@@ -119,8 +119,10 @@ func aggrLog() {
 
 	aggrFilePath := filepath.Join(homeDir, AggrFileName)
 	aggrfile, _ := os.OpenFile(aggrFilePath, os.O_RDWR|os.O_CREATE, 0644)
+	defer aggrfile.Close()
 	for _, workTime := range workingTimeADays {
 		aggrfile.WriteString(workTime.ToCsvLine())
+		print(workTime.ToCsvLine())
 	}
 }
 

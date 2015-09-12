@@ -3,15 +3,16 @@
 <plist version="1.0">
 <dict>
         <key>Label</key>
-        <string>github.com/kuxuxun/log_mac_sleep</string>
+        <string>github.com.kuxuxun.log_mac_sleep</string>
         <key>Disabled</key>
         <false/>
         <key>ProgramArguments</key>
         <array>
-                <string>loc_mac_sleep</string>
-                <string>-watch</string>
+          <string>log_mac_sleep</string>
+          <string>-watch</string>
         </array>
         <key>RunAtLoad</key>
+        <true/>
         <key>KeepAlive</key>
         <true/>
         <key>StandardOutPath</key>
