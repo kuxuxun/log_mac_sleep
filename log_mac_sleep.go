@@ -149,7 +149,7 @@ func (w WorkingTimeADay) ToCsvLine() string {
 		e = fmtJst(w.End, outTimeFmt)
 	}
 
-	return fmt.Sprintf("%s,%s,%s", dt, s, e)
+	return fmt.Sprintf("%s,%s,%s\n", dt, s, e)
 }
 
 func aggregate(logFileScanner *bufio.Scanner) ([]WorkingTimeADay, error) {
