@@ -33,21 +33,21 @@ wakeup:2015-09-05 10_00_00`
 
 	{
 		wt := result[0]
-		if wt.ToCsvLine() != "2015-09-03,10:00:00,19:51:10" {
+		if wt.ToCsvLine() != "2015-09-03,10:00:00,19:51:10\n" {
 			t.Fatal(fmt.Sprintf("invalid csv line %s", wt.ToCsvLine()))
 		}
 	}
 
 	{
 		wt := result[1]
-		if wt.ToCsvLine() != "2015-09-04,09:55:30,18:50:10" {
+		if wt.ToCsvLine() != "2015-09-04,09:55:30,18:50:10\n" {
 			t.Fatal(fmt.Sprintf("invalid csv line %s", wt.ToCsvLine()))
 		}
 	}
 
 	{
 		wt := result[2]
-		if wt.ToCsvLine() != "2015-09-05,10:00:00," {
+		if wt.ToCsvLine() != "2015-09-05,10:00:00,\n" {
 			t.Fatal(fmt.Sprintf("invalid csv line %s", wt.ToCsvLine()))
 		}
 	}
@@ -72,14 +72,14 @@ sleep:2015-09-04 10_50_10`
 
 	{
 		wt := result[0]
-		if wt.ToCsvLine() != "2015-09-03,10:00:00," {
+		if wt.ToCsvLine() != "2015-09-03,10:00:00,\n" {
 			t.Fatal(fmt.Sprintf("invalid csv line %s", wt.ToCsvLine()))
 		}
 	}
 
 	{
 		wt := result[1]
-		if wt.ToCsvLine() != "2015-09-04,10:00:00,10:50:10" {
+		if wt.ToCsvLine() != "2015-09-04,10:00:00,10:50:10\n" {
 			t.Fatal(fmt.Sprintf("invalid csv line %s", wt.ToCsvLine()))
 		}
 	}
@@ -102,14 +102,14 @@ sleep:2015-09-04 10_50_10`
 
 	{
 		wt := result[0]
-		if wt.ToCsvLine() != "2015-09-03,,10:00:00" {
+		if wt.ToCsvLine() != "2015-09-03,,10:00:00\n" {
 			t.Fatal(fmt.Sprintf("invalid csv line %s", wt.ToCsvLine()))
 		}
 	}
 
 	{
 		wt := result[1]
-		if wt.ToCsvLine() != "2015-09-04,,10:50:10" {
+		if wt.ToCsvLine() != "2015-09-04,,10:50:10\n" {
 			t.Fatal(fmt.Sprintf("invalid csv line %s", wt.ToCsvLine()))
 		}
 	}
