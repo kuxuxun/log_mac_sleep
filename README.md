@@ -20,10 +20,23 @@ log_mac_sleep -watch
 log_mac_sleep -daily
 ```
 
-register to launchd
+### register to launchd
 ```bash
 go get github.com/kuxuxun/log_mac_sleep
-cd $GOPATH/src/github.com/kuxuxun/log_mac_sleep/_plist
+```
+
+copy _plist/github.com.kuxuxun.log_mac_sleep.plist.example to _plist/github.com.kuxuxun.log_mac_sleep.plist.
+replace log_mac_sleep path with absolute path in your environment.
+```
+<array>
+  <string>/path/to/log_mac_sleep</string>
+  <string>-watch</string>
+</array>
+```
+
+then load plist
+
+```bash
 sh register_launchd.sh
 ```
 

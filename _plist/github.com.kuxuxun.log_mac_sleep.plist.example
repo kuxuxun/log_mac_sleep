@@ -8,7 +8,7 @@
         <false/>
         <key>ProgramArguments</key>
         <array>
-          <string>log_mac_sleep</string>
+          <string>/path/to/log_mac_sleep</string>
           <string>-watch</string>
         </array>
         <key>RunAtLoad</key>
