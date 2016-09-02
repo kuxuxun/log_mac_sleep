@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	lw "github.com/kuxuxun/log_mac_sleep"
+	lw "github.com/tacogips/log_mac_sleep"
 )
 
 var (

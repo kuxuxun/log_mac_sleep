@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kuxuxun/mac_switch_watch"
+	"github.com/tacogips/mac_switch_watch"
 )
 
 var (
