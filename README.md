@@ -5,7 +5,7 @@
 
 ### Download
 ```bash
-go get github.com/kuxuxun/log_mac_sleep/cmd/log_mac_sleep
+go get github.com/tacogips/log_mac_sleep/cmd/log_mac_sleep
 ```
 
 ### Output file path
@@ -22,10 +22,10 @@ log_mac_sleep -daily
 
 ### register to launchd
 ```bash
-go get github.com/kuxuxun/log_mac_sleep
+go get github.com/tacogips/log_mac_sleep
 ```
 
-copy _plist/github.com.kuxuxun.log_mac_sleep.plist.example to _plist/github.com.kuxuxun.log_mac_sleep.plist.
+copy _plist/github.com.tacogips.log_mac_sleep.plist.example to _plist/github.com.tacogips.log_mac_sleep.plist.
 replace log_mac_sleep path with absolute path in your environment.
 ```
 <array>

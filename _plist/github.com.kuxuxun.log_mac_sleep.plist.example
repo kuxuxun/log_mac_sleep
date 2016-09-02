@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
         <key>Label</key>
-        <string>github.com.kuxuxun.log_mac_sleep</string>
+        <string>github.com.tacogips.log_mac_sleep</string>
         <key>Disabled</key>
         <false/>
         <key>ProgramArguments</key>
